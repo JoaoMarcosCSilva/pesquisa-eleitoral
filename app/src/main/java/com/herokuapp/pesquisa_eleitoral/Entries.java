@@ -40,11 +40,10 @@ public class Entries {
         return false;
     }
 
-    public static Collection entradas;
+    public static EntryFile entradas;
 
-
-    public static void loadFromFile(){
-        if (!isExternalStorageReadable())return;
+    public static String loadFromFile(){
+        if (!isExternalStorageReadable())return "";
         String data = "";
 
 
@@ -60,11 +59,14 @@ public class Entries {
                 data += (sCurrentLine);
             }
             Gson gson = new Gson();
-            entradas = gson.fromJson(data, Collection.class);
+            entradas = gson.fromJson(data, EntryFile.class);
+
+            return data;
 
         }catch(Exception e){
             Log.d("io","File reading error: " + e.getMessage());
-            entradas = new Collection(MainActivity.username);
+            entradas = new EntryFile(MainActivity.username);
+            return "";
         }
     }
     private static void savetofile () {
@@ -89,7 +91,7 @@ public class Entries {
         }
     }
     public static void save(){
-        entradas.info.add(current);
+        entradas.data.info.add(current);
         current = new Entry();
 
         for (Activity a : MainActivity.activities){

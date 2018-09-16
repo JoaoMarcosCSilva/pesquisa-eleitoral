@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         TextView username_label = findViewById(R.id.username_label);
 
         username_label = findViewById(R.id.username_label);
-        username_label.setText(username + " - " + Entries.entradas.info.size());
+        username_label.setText(username + " - " + Entries.entradas.data.info.size());
 
         Button entry_button = findViewById(R.id.new_entry_button);
         Button submit_button = findViewById(R.id.submit_button);
