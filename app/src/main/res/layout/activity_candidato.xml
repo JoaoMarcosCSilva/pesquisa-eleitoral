@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Candidato">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Em quem votará"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/group_candidato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rejeita_naosei">
+
+            <RadioButton
+                android:id="@+id/rejeita_alvaro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Álvaro Dias (Podemos) - 19" />
+
+            <RadioButton
+                android:id="@+id/rejeita_daciolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cabo Daciolo (Patriota) - 51" />
+
+            <RadioButton
+                android:id="@+id/rejeita_ciro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ciro Gomes (PDT) - 12" />
+
+            <RadioButton
+                android:id="@+id/rejeita_eymael"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eymael (DC) - 27" />
+
+            <RadioButton
+                android:id="@+id/rejeita_haddad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fernando Haddad (PT) - 13" />
+
+            <RadioButton
+                android:id="@+id/rejeita_alckmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Geraldo Alckmin (PSDB) - 45" />
+
+            <RadioButton
+                android:id="@+id/rejeita_boulos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guilherme Boulos (PSOL) - 50" />
+
+            <RadioButton
+                android:id="@+id/rejeita_meirelles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Henrique Meirelles (MDB) - 15" />
+
+            <RadioButton
+                android:id="@+id/rejeita_bolsonaro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jair Bolsonaro (PSL) - 17" />
+
+            <RadioButton
+                android:id="@+id/rejeita_amoedo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="João Amoêdo (Novo) - 30" />
+
+            <RadioButton
+                android:id="@+id/rejeita_goulart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="João Goulart Filho (PPL) - 54" />
+
+            <RadioButton
+                android:id="@+id/rejeita_marina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marina Silva (Rede) - 18" />
+
+            <RadioButton
+                android:id="@+id/rejeita_vera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vera Lúcia (PSTU) - 16" />
+
+            <RadioButton
+                android:id="@+id/rejeita_nulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Branco/Nulo" />
+
+            <RadioButton
+                android:id="@+id/rejeita_naosei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Não sei/Não quero respoder" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_go_candidato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Próximo" />
+    </LinearLayout>
+</ScrollView>
