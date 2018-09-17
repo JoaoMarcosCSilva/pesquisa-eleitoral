@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -28,6 +30,7 @@ import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.Base64;
 import com.google.api.client.util.ExponentialBackOff;
+import com.google.gson.Gson;
 
 
 public class Submit extends AppCompatActivity {
@@ -36,69 +39,50 @@ public class Submit extends AppCompatActivity {
 
     LinearLayout layout;
 
-    HttpTransport httpTransport = new NetHttpTransport();
-    JsonFactory jsonFactory = new GsonFactory();
 
 
     String post = "/v1/buckets/pesquisa/collections/" + MainActivity.username + "/records";
-    String host = "kinto.dev.mozaws.net";
+    String host = "kinto-pesquisa.herokuapp.com";
 
+    String address_col = "https://" + host + "/v1/buckets/pesquisa/collections";
     String address = "https://" + host + post;
+
     String authorization = "";
     long content_length = 0;
 
     class uploadThread extends Thread {
 
-        HttpResponse postData (String url, String username, String password, String data){
-            HttpRequestInitializer httpRequestInitializer = new HttpRequestInitializer() {
-                @Override
-                public void initialize(HttpRequest httpRequest) throws IOException {
-                    httpRequest.setParser(new JsonObjectParser(jsonFactory));
-                }
-            };
-            HttpRequestFactory requestFactory = httpTransport.createRequestFactory(httpRequestInitializer);
-            GenericUrl genericUrl = new GenericUrl(url);
-            try{
-                HttpRequest httpRequest = requestFactory.buildPostRequest(genericUrl, ByteArrayContent.fromString("application/json", data));
-
-                HttpHeaders httpHeaders = httpRequest.getHeaders();
-
-                authorization = username + ":" + password;
-                authorization = Base64.encodeBase64String(authorization.getBytes());
-
-                httpHeaders.setAccept("application/json");
-                httpHeaders.setAcceptEncoding("gzip, deflate");
-                httpHeaders.setAuthorization("Basic " + authorization);
-                httpHeaders.set("Connection","keep-alive");
-                httpHeaders.setContentLength(content_length);
-                httpHeaders.setContentType("application/json");
-                httpHeaders.set("Host", host);
-                httpHeaders.setUserAgent("com.herokuapp.pesquisa_eletoral");
-
-                httpRequest.setHeaders(httpHeaders);
-
-                HttpResponse httpResponse = httpRequest.execute();
-
-
-
-                return httpResponse;
-            }catch (Exception e){
-                printLabel(e.getMessage());
-                return null;
-            }
-        }
         void upload(int counter){
             if (counter >= maxAttemts){
                 printLabel("Max attempts reached. Upload failed.");
                 return;
             }
 
-            HttpResponse httpResponse = postData(address, MainActivity.username, MainActivity.username, Entries.loadFromFile());
+            CollectionFile collectionFile = new CollectionFile();
+            collectionFile.data.id = MainActivity.username;
 
-            try {
+            String collection_data = new Gson().toJson(collectionFile);
+
+            String data = Entries.loadFromFile();
+
+            String auth = MainActivity.username + ":" + MainActivity.username;
+
+            //HttpResponse responseCollection = Kinto.post_data(address_col, host, collection_data, auth);
+
+            HttpResponse httpResponse = Kinto.post_data(address, host, data, auth);
+
+
+            Logger.getLogger(HttpTransport.class.getName()).setLevel(Level.INFO);
+
+            if (Kinto.lastError != ""){
+                printLabel(Kinto.lastError);
+            }else{
+                //int code_col = responseCollection.getStatusCode();
                 int code = httpResponse.getStatusCode();
-                if (code != 201){
+                //if (!(code_col == 200 || code_col == 201) && (code != 200 || code != 201)){
+                if (code != 200 && code != 201){
                     String message = httpResponse.getStatusMessage();
+                //    printLabel(code_col + ": " + message);
                     printLabel(code + ": " + message);
                     upload(counter + 1);
                 }
@@ -109,8 +93,6 @@ public class Submit extends AppCompatActivity {
                         finish();
                     }
                 });
-            }catch(Exception e){
-                printLabel(e.getMessage());
             }
         }
 
