@@ -67,22 +67,24 @@ public class Submit extends AppCompatActivity {
 
             String auth = MainActivity.username + ":" + MainActivity.username;
 
-            //HttpResponse responseCollection = Kinto.post_data(address_col, host, collection_data, auth);
+            HttpResponse responseCollection = Kinto.post_data(address_col, host, collection_data, auth);
+
+            Logger l = Logger.getLogger(HttpTransport.class.getName());
+            l.setLevel(Level.ALL);
 
             HttpResponse httpResponse = Kinto.post_data(address, host, data, auth);
 
 
-            Logger.getLogger(HttpTransport.class.getName()).setLevel(Level.INFO);
+
 
             if (Kinto.lastError != ""){
                 printLabel(Kinto.lastError);
             }else{
-                //int code_col = responseCollection.getStatusCode();
+                int code_col = responseCollection.getStatusCode();
                 int code = httpResponse.getStatusCode();
-                //if (!(code_col == 200 || code_col == 201) && (code != 200 || code != 201)){
-                if (code != 200 && code != 201){
+                if (!(code_col == 200 || code_col == 201) && (code != 200 || code != 201)){
                     String message = httpResponse.getStatusMessage();
-                //    printLabel(code_col + ": " + message);
+                        printLabel(code_col + ": " + message);
                     printLabel(code + ": " + message);
                     upload(counter + 1);
                 }
@@ -93,6 +95,7 @@ public class Submit extends AppCompatActivity {
                         finish();
                     }
                 });
+                
             }
         }
 

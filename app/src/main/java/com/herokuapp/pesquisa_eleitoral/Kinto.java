@@ -48,14 +48,10 @@ public class Kinto {
             httpHeaders.setAcceptEncoding("gzip, deflate");
             httpHeaders.setAuthorization("Basic " + auth);
             httpHeaders.set("Connection","keep-alive");
-            httpHeaders.setContentLength((long) data.length());
-            httpHeaders.setContentType("application/json");
             httpHeaders.set("Host", host);
             httpHeaders.setUserAgent("com.herokuapp.pesquisa_eletoral");
 
             httpRequest.setHeaders(httpHeaders);
-
-            String s = httpRequest.getHeaders().getContentType();
 
             HttpResponse httpResponse = httpRequest.execute();
 
