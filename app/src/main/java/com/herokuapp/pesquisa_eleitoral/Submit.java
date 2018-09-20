@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,9 +49,6 @@ public class Submit extends AppCompatActivity {
     String address_col = "https://" + host + "/v1/buckets/pesquisa/collections";
     String address = "https://" + host + post;
 
-    String authorization = "";
-    long content_length = 0;
-
     class uploadThread extends Thread {
 
         void upload(int counter){
@@ -63,7 +62,10 @@ public class Submit extends AppCompatActivity {
 
             String collection_data = new Gson().toJson(collectionFile);
 
-            String data = Entries.loadFromFile();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+
+            String data = Entries.loadFromFile(formatter.format(date));
 
             String auth = MainActivity.username + ":" + MainActivity.username;
 
@@ -82,6 +84,8 @@ public class Submit extends AppCompatActivity {
             }else{
                 int code_col = responseCollection.getStatusCode();
                 int code = httpResponse.getStatusCode();
+
+
                 if (!(code_col == 200 || code_col == 201) && (code != 200 || code != 201)){
                     String message = httpResponse.getStatusMessage();
                         printLabel(code_col + ": " + message);
@@ -95,7 +99,7 @@ public class Submit extends AppCompatActivity {
                         finish();
                     }
                 });
-                
+
             }
         }
 
@@ -127,6 +131,8 @@ public class Submit extends AppCompatActivity {
         setContentView(R.layout.activity_submit);
 
         layout = findViewById(R.id.layout_submit);
+
+
         new uploadThread().start();
 
     }

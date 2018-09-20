@@ -20,112 +20,113 @@
                 android:layout_height="wrap_content"
                 android:text="Em quem não votaria, de maneira alguma"
                 android:textSize="18sp" />
+            
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/layout_botoes_rejeita">
+                    <CheckBox
+                        android:id="@+id/CheckBox2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Álvaro Dias (Podemos) - 19" />
 
-            <RadioGroup
-                android:id="@+id/group_rejeita"
+                    <CheckBox
+                        android:id="@+id/CheckBox3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cabo Daciolo (Patriota) - 51" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ciro Gomes (PDT) - 12" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Eymael (DC) - 27" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fernando Haddad (PT) - 13" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Geraldo Alckmin (PSDB) - 45" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Guilherme Boulos (PSOL) - 50" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Henrique Meirelles (MDB) - 15" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jair Bolsonaro (PSL) - 17" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="João Amoêdo (Novo) - 30" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="João Goulart Filho (PPL) - 54" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Marina Silva (Rede) - 18" />
+
+                    <CheckBox
+                        android:id="@+id/CheckBox15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vera Lúcia (PSTU) - 16" />
+                </LinearLayout>
+                
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/radioButton11">
+                android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Álvaro Dias (Podemos) - 19" />
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
+                <Button
+                    android:id="@+id/button_naoresponde_rejeita"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Cabo Daciolo (Patriota) - 51" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ciro Gomes (PDT) - 12" />
-
-                <RadioButton
-                    android:id="@+id/radioButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Eymael (DC) - 27" />
-
-                <RadioButton
-                    android:id="@+id/radioButton6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fernando Haddad (PT) - 13" />
-
-                <RadioButton
-                    android:id="@+id/radioButton7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Geraldo Alckmin (PSDB) - 45" />
-
-                <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Guilherme Boulos (PSOL) - 50" />
-
-                <RadioButton
-                    android:id="@+id/radioButton9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Henrique Meirelles (MDB) - 15" />
-
-                <RadioButton
-                    android:id="@+id/radioButton10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jair Bolsonaro (PSL) - 17" />
-
-                <RadioButton
-                    android:id="@+id/radioButton12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="João Amoêdo (Novo) - 30" />
-
-                <RadioButton
-                    android:id="@+id/radioButton13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="João Goulart Filho (PPL) - 54" />
-
-                <RadioButton
-                    android:id="@+id/radioButton14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Marina Silva (Rede) - 18" />
-
-                <RadioButton
-                    android:id="@+id/radioButton15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vera Lúcia (PSTU) - 16" />
-
-                <RadioButton
-                    android:id="@+id/radioButton16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Branco/Nulo" />
-
-                <RadioButton
-                    android:id="@+id/radioButton11"
+                    android:text="Não sei/Não quero Responder" />
+                
+    
+                <Button
+                    android:id="@+id/button_go_rejeita"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Não sei/Não quero respoder" />
-
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/button_go_rejeita"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Próximo" />
+                    android:text="Próximo" />
+                
+            </LinearLayout>
         </LinearLayout>
 
 </ScrollView>

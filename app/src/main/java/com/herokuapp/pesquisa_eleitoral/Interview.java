@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 public class Interview extends AppCompatActivity {
 
     RadioGroup group_gender;
-    RadioGroup group_class;
+
 
     Button button_go;
 
@@ -22,14 +22,9 @@ public class Interview extends AppCompatActivity {
         RadioButton gender_button = findViewById(gender_id);
         int gender = group_gender.indexOfChild(gender_button);
 
-        int class_id = group_class.getCheckedRadioButtonId();
-        RadioButton class_button = findViewById(class_id);
-        int classe = group_class.indexOfChild(class_button);
-
-        Entries.current.classe_social = classe;
         Entries.current.genero = gender;
 
-        Intent intent = new Intent(this, Candidato.class);
+        Intent intent = new Intent(this, Renda.class);
         startActivity(intent);
         MainActivity.activities.add(this);
     }
@@ -42,7 +37,6 @@ public class Interview extends AppCompatActivity {
         button_go = findViewById(R.id.button_go);
 
         group_gender = findViewById(R.id.group_gender);
-        group_class = findViewById(R.id.group_class);
 
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override

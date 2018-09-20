@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         TextView username_label = findViewById(R.id.username_label);
 
         username_label = findViewById(R.id.username_label);
-        username_label.setText(username + " - " + Entries.entradas.data.info.size());
+        username_label.setText(username + " - " + Entries.size());
 
         Button entry_button = findViewById(R.id.new_entry_button);
         Button submit_button = findViewById(R.id.submit_button);
@@ -105,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Interview.class);
         startActivity(intent);
     }
+
     private void submit(){
+        if (Entries.size() == 0) return;
         Intent intent = new Intent(this, Submit.class);
         startActivity(intent);
     }

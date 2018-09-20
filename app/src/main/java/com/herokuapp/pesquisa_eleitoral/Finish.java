@@ -2,9 +2,14 @@ package com.herokuapp.pesquisa_eleitoral;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,17 +48,33 @@ public class Finish extends AppCompatActivity {
         txt_candidato = findViewById(R.id.txt_candidato);
         txt_candidato.setText("Candidato: " + Entries.str_candidato[Entries.current.candidato]);
 
+
         txt_rejeita = findViewById(R.id.txt_rejeita);
-        txt_rejeita.setText("Rejeição: " + Entries.str_candidato[Entries.current.rejeita]);
 
+        LinearLayout layout = findViewById(R.id.layout_finish);
 
-        button_confirm = findViewById(R.id.button_confirm);
+        if (Entries.current.rejeita.size() == 0){
+            txt_rejeita.setText("Rejeição: Nenhuma");
+        }else{
+            txt_rejeita.setText(Entries.current.rejeita.size() == 1 ?  "Rejeição:" : "Rejeições:");
+            for (int i : Entries.current.rejeita){
+                TextView txt = new TextView(this);
+                txt.setText(Entries.str_candidato[i]);
+                txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                layout.addView(txt);
+            }
 
+        }
+
+        button_confirm = new Button(this);
+        button_confirm.setText("CONFIRMAR");
+        button_confirm.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         button_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 confirm();
             }
         });
+        layout.addView(button_confirm);
     }
 }

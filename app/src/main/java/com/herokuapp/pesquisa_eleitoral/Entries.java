@@ -42,6 +42,42 @@ public class Entries {
 
     public static EntryFile entradas;
 
+    public static String loadFromFile(String criado_em){
+
+        if (!isExternalStorageReadable())return "";
+        String data = "";
+
+
+        try {
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "resultados_pesquisa.txt");
+
+            FileReader freader = new FileReader(file);
+            BufferedReader breader = new BufferedReader(freader);
+
+            String sCurrentLine;
+
+            while ((sCurrentLine = breader.readLine()) != null) {
+                data += (sCurrentLine);
+            }
+            Gson gson = new Gson();
+
+            entradas = gson.fromJson(data, EntryFile.class);
+            entradas.data.criado_em = criado_em;
+
+            return gson.toJson(entradas);
+
+        }catch(Exception e){
+            Log.d("io","File reading error: " + e.getMessage());
+            entradas = new EntryFile(MainActivity.username);
+            return "";
+        }
+    }
+
+    public static int size(){
+        if (entradas == null)return 0;
+        return entradas.data.info.size();
+    }
+
     public static String loadFromFile(){
         if (!isExternalStorageReadable())return "";
         String data = "";
@@ -72,6 +108,7 @@ public class Entries {
     private static void savetofile () {
         if (!isExternalStorageWritable())return;
         String data = "";
+
 
         Gson gson = new Gson();
         data = gson.toJson(entradas);

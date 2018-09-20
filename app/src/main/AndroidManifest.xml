@@ -3,7 +3,6 @@
     package="com.herokuapp.pesquisa_eleitoral">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -25,7 +24,8 @@
         <activity android:name=".Candidato" />
         <activity android:name=".Rejeita" />
         <activity android:name=".Finish" />
-        <activity android:name=".Submit"></activity>
+        <activity android:name=".Submit" />
+        <activity android:name=".Renda"></activity>
     </application>
 
 </manifest>

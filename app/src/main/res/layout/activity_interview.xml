@@ -41,62 +41,6 @@
                 android:text="Feminino" />
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Renda Familiar Mensal"
-            android:textSize="18sp" />
-
-        <RadioGroup
-            android:id="@+id/group_class"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/radio_noclass">
-
-            <RadioButton
-                android:id="@+id/radio_a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Acima de 20 Salários Mínimos" />
-
-            <RadioButton
-                android:id="@+id/radio_b"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="De 10 a 20 Salários Mínimos" />
-
-            <RadioButton
-                android:id="@+id/radio_c"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="De 4 a 10 Salários Mínimos" />
-
-            <RadioButton
-                android:id="@+id/radio_d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="De 2 a 4 Salários Mínimos" />
-
-            <RadioButton
-                android:id="@+id/radio_e"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Até 2 Salários Mínimos" />
-
-            <RadioButton
-                android:id="@+id/radio_noclass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Prefiro não responder" />
-
-        </RadioGroup>
 
         <Button
             android:id="@+id/button_go"
